@@ -21,9 +21,9 @@ COPY package*.json ./
 
 RUN npm install 
 
-RUN npm run build
+COPY . .
 
-# COPY . .
+RUN npm run build
 
 # COPY --from=development /app/dist ./dist
 
