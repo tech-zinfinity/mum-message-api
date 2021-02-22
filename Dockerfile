@@ -13,7 +13,7 @@ COPY package*.json ./
 RUN npm install 
 COPY . .
 COPY --from=development /app/dist ./dist
-CMD ["node", "dist/main"]
+CMD ["node", "dist/main.js"]
 
 # FROM node:10 AS builder
 # WORKDIR /app
