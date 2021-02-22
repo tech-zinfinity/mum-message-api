@@ -21,11 +21,11 @@ COPY package*.json ./
 
 RUN npm install 
 
-COPY . .
-
 RUN npm run build
 
-COPY --from=development /app/dist ./dist
+# COPY . .
+
+# COPY --from=development /app/dist ./dist
 
 CMD ["node", "dist"]
 
