@@ -1,14 +1,14 @@
-FROM node:12.13-alpine As development
+# FROM node:12.13-alpine As development
 
-WORKDIR /usr/src/app
+# WORKDIR /usr/src/app
 
-COPY package*.json ./
+# COPY package*.json ./
 
-RUN npm install --only=development
+# RUN npm install --only=development
 
-COPY . .
+# COPY . .
 
-RUN npm run build
+# RUN npm run build
 
 FROM node:12.13-alpine as production
 
