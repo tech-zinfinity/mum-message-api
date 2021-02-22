@@ -23,6 +23,8 @@ RUN npm install
 
 COPY . .
 
+RUN npm run build
+
 COPY --from=development /app/dist ./dist
 
 CMD ["node", "dist"]
