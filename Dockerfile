@@ -27,7 +27,7 @@ RUN npm install
 
 COPY --from=development /app/dist ./dist
 
-CMD ["node", "app/dist"]
+CMD ["node", "/dist"]
 
 # FROM node:12.13-alpine
 # WORKDIR /app
