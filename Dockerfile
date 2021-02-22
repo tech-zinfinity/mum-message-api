@@ -21,7 +21,7 @@ COPY package*.json ./
 
 RUN npm install --only=production
 
-COPY . .
+# COPY . .
 
 COPY --from=development /app/dist ./dist
 
