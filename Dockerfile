@@ -1,33 +1,33 @@
-FROM node:12.13-alpine As development
+# FROM node:12.13-alpine As development
 
-WORKDIR /app
+# WORKDIR /app
 
-COPY package*.json ./
+# COPY package*.json ./
 
-RUN npm install
-
-COPY . .
-
-RUN npm run build
-
-FROM node:12.13-alpine as production
-
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install 
+# RUN npm install
 
 # COPY . .
 
 # RUN npm run build
 
-COPY --from=development /app/dist ./dist
+# FROM node:12.13-alpine as production
 
-CMD ["node", "./dist"]
+# ARG NODE_ENV=production
+# ENV NODE_ENV=${NODE_ENV}
+
+# WORKDIR /app
+
+# COPY package*.json ./
+
+# RUN npm install 
+
+# COPY . .
+
+# RUN npm run build
+
+# COPY --from=development /app/dist ./dist
+
+# CMD ["node", "dist"]
 
 # FROM node:12.13-alpine
 # WORKDIR /app
@@ -38,3 +38,16 @@ CMD ["node", "./dist"]
 # COPY  /app/dist ./dist
 # # EXPOSE 8080
 # CMD ["node", "dist"]
+
+FROM node:10 AS builder
+WORKDIR /app
+COPY ./package.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+
+FROM node:10-alpine
+WORKDIR /app
+COPY --from=builder /app ./
+CMD ["npm", "run", "start:prod"]
