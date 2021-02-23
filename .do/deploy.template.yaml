@@ -1,0 +1,8 @@
+spec:
+  name: mum-message-api
+  services:
+  - environment_slug: node-js
+    git:
+      branch: master
+      repo_clone_url: https://github.com/tech-zinfinity/mum-message-api.git
+    name: mum-message-api
